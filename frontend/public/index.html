@@ -1,0 +1,46 @@
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контекстный тренажёр языка</title>
+    <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22&gt;&lt;text y=%22.9em%22 font-size=%2290%22&gt;🧠&lt;/text&gt;&lt;/svg&gt;">
+
+    <!-- --- ИЗМЕНЕНИЕ: Подключаем новый файл training.css --- -->
+    <link rel="stylesheet" href="styles/desktop.css">
+    <link rel="stylesheet" href="styles/settings.css">
+    <link rel="stylesheet" href="styles/training.css"> <!-- ДОБАВЛЕН ЭТОТ ФАЙЛ -->
+    <link rel="stylesheet" href="styles/mobile.css">
+    <!-- <link rel="stylesheet" href="style.css"> --> <!-- Старый файл больше не грузим -->
+
+</head>
+<body class="theme-newspaper">
+    <!-- --- ИЗМЕНЕНИЕ (v21.2): Кнопка "Домой" теперь внутри wrapper --- -->
+    <div class="main-wrapper">
+        <div class="container" id="app">
+            <!-- Начальное содержимое будет заменено JavaScript -->
+            <div class="start-screen-container">
+                <div class="logo">🧠</div>
+                <h1>Загрузка...</h1>
+            </div>
+        </div>
+        <!-- Футер (колонтитул) с версией -->
+        <footer id="app-footer"></footer>
+
+        <!-- Кнопка "Домой" -->
+        <button id="global-home-button" onclick="app.goHomeAndSave()" title="На главный экран">🏠</button>
+    </div>
+    <!-- --- КОНЕЦ ИЗМЕНЕНИЯ --- -->
+
+
+    <!-- Вспомогательные элементы -->
+    <div id="easter-egg" class="easter-egg" style="opacity: 0;">🥳</div>
+    <div class="tooltip" id="tooltip"></div>
+    <canvas id="matrix-canvas"></canvas>
+
+    <!-- Основной скрипт приложения -->
+    <script src="main.js" type="module" defer></script>
+
+</body>
+</html>
+
+

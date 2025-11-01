@@ -1,0 +1,311 @@
+/* --- РЕФАКТОРИНГ: Сюда перенесены все стили для Тренировки (Этапы 1, 2, 3, Выбор слов) --- */
+
+.card-training { 
+    text-align: center; 
+    padding: 20px; 
+    border-radius: 10px; 
+    margin-bottom: 20px;
+}
+
+.russian-word, .foreign-word { 
+    font-size: 2rem; 
+    color: var(--accent-color); 
+    margin-bottom: 5px; 
+    font-weight: bold; 
+}
+.language-label { 
+    font-style: italic; 
+    margin-bottom: 20px; 
+    font-size: 0.9em; 
+    display: block; 
+    color: var(--accent-hover); 
+}
+
+/* --- Стили для Этапа 1 (Инпуты букв) --- */
+.letter-input { 
+    width: 30px; 
+    height: 40px; 
+    font-size: 22px; 
+    text-align: center; 
+    border: 2px solid #ddd; 
+    border-radius: 6px; 
+    transition: all 0.3s; 
+    background-color: var(--bg-color); 
+    color: var(--text-color); 
+    margin: 0 1px; 
+}
+.letter-input:focus { 
+    outline: none; 
+    border-color: var(--accent-color); 
+}
+.letter-input.correct { 
+    background: #d4edda; 
+    border-color: var(--success-color); 
+}
+.letter-input.incorrect { 
+    background: #f8d7da; 
+    border-color: var(--danger-color); 
+}
+.theme-dark .letter-input, .theme-dark .context-input, .theme-dark .super-game-input, .theme-dark .dict-editor-input { 
+    background: #555; 
+    color: #eee; 
+    border-color: #777; 
+}
+.theme-dark .letter-input.correct { 
+    background: #004d40; 
+    border-color: #00796B; 
+}
+.theme-dark .letter-input.incorrect { 
+    background: #5c000f; 
+    border-color: #a3154c; 
+}
+
+.letter-inputs { 
+    display: flex; 
+    justify-content: center; 
+    align-items: baseline; 
+    flex-wrap: wrap; 
+    margin-bottom: 20px; 
+    font-size: 24px; 
+}
+.space-char { width: 16px; }
+
+.progress-indicator { 
+    text-align: center; 
+    margin: 20px 0; 
+    font-size: 24px; 
+    color: var(--accent-color); 
+    letter-spacing: 0.2em; 
+}
+.bilingual-training-block { margin-bottom: 20px; }
+.bilingual-training-block h3 { color: var(--accent-hover); margin-bottom: 10px; }
+
+
+/* --- Стили для Этапа 3 (Контекст) --- */
+.context-text { 
+    line-height: 2.5; 
+    font-size: 1.1em; 
+}
+.instructions { 
+    text-align: center; 
+    color: var(--accent-hover); 
+    margin-top: -15px; 
+    margin-bottom: 20px; 
+    font-style: italic; 
+    font-weight: normal; 
+}
+.context-input-wrapper { 
+    display: inline-block; 
+    position: relative; 
+    margin: 0 5px; 
+}
+.context-input { 
+    border: none; 
+    border-bottom: 2px solid var(--accent-color); 
+    background: transparent; 
+    font-size: inherit; 
+    color: var(--text-color); 
+    padding: 2px 4px; 
+    text-align: center; 
+}
+.context-input:focus { 
+    outline: none; 
+    border-bottom-color: var(--accent-hover); 
+}
+.context-input.incorrect { 
+    border-bottom-color: var(--danger-color); 
+    animation: shake 0.4s; 
+}
+.context-input::placeholder { 
+    color: var(--text-color); 
+    opacity: 0.4; 
+    font-style: italic; 
+}
+.theme-dark .context-input::placeholder { 
+    color: var(--text-color); 
+    opacity: 0.3; 
+}
+.context-word-correct { 
+    background: color-mix(in srgb, var(--success-color) 20%, transparent); 
+    padding: 2px 6px; 
+    border-radius: 4px; 
+    font-weight: 500; 
+}
+
+
+/* --- Стили для Этапа 2 (Супер-игра) --- */
+.super-game-input { 
+    width: 80%; 
+    max-width: 400px; 
+    padding: 10px; 
+    font-size: 1em; 
+    border-radius: 8px; 
+    border: 2px solid var(--accent-color); 
+    background: var(--paper-color); 
+    color: var(--text-color); 
+    margin-bottom: 10px; 
+}
+.super-game-input.incorrect { 
+    border-color: var(--danger-color); 
+    animation: shake 0.4s; 
+}
+.super-game-bilingual-group { margin-bottom: 15px; }
+.super-game-bilingual-group label { 
+    display: block; 
+    margin-bottom: 5px; 
+    color: var(--accent-hover); 
+}
+
+/* --- Общие элементы тренировки (Сердечки, Очки, Кнопки) --- */
+.hearts-container { 
+    font-size: 32px; 
+    margin-bottom: 15px; 
+    letter-spacing: 5px; 
+    text-shadow: 0 0 5px rgba(0,0,0,0.3); 
+    color: var(--danger-color); 
+    min-height: 38px;
+}
+.theme-dark .hearts-container { 
+    color: #eee; 
+    text-shadow: 0 0 5px rgba(255,255,255,0.5); 
+}
+.hearts-out-message { 
+    color: var(--danger-color); 
+    font-weight: 600; 
+    font-size: 1.1rem; 
+    font-style: italic; 
+}
+
+.score-display { 
+    text-align: center; 
+    margin-top: 15px; 
+    color: white; 
+    font-size: 14px; 
+}
+.score-display span { margin: 0 5px; }
+.training-score-display { 
+    text-align: center; 
+    margin: -10px 0 15px 0; 
+    color: var(--accent-color); 
+}
+.buy-heart-container { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    gap: 15px; 
+    padding: 10px; 
+    margin-top: 10px; 
+    border-radius: 8px; 
+    background: color-mix(in srgb, var(--accent-color) 8%, transparent); 
+    font-weight: bold; 
+    color: var(--accent-color); 
+}
+
+.auto-advance-toggle { 
+    margin-top: 15px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    gap: 10px; 
+    color: var(--accent-color); 
+}
+.active-sessions-info { 
+    text-align: center; 
+    margin-bottom: 15px; 
+    color: var(--accent-hover); 
+    font-style: italic; 
+    font-weight: bold; 
+}
+
+/* --- Стили для Выбора Слов (Word Selection) --- */
+.dictionary-view-container {
+    display: block;
+    max-height: 70vh; 
+    overflow-y: auto;
+}
+.dictionary-view-container details { 
+    margin: 5px 0; 
+    background-color: transparent; 
+    border: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent); 
+}
+.dictionary-view-container summary { 
+    padding: 8px 12px; 
+    font-size: 1.1em; 
+}
+.dictionary-view-container summary.category-fully-selected { 
+    background-color: color-mix(in srgb, var(--success-color) 20%, transparent); 
+}
+.dictionary-view-container ul { 
+    list-style-type: none; 
+    padding: 5px 15px 15px 15px; 
+}
+.dictionary-view-container li { 
+    padding: 8px 5px; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+}
+.dictionary-view-container li:hover { 
+    background: color-mix(in srgb, var(--accent-color) 10%, transparent); 
+}
+.dictionary-view-container li.selected { 
+    background: color-mix(in srgb, var(--success-color) 20%, transparent); 
+    font-weight: bold; 
+}
+.dictionary-view-container li input { pointer-events: none; }
+.category-select-btn { 
+    font-size: 0.8em; 
+    font-weight: bold; 
+    color: var(--accent-hover); 
+    margin-left: 8px; 
+    cursor: pointer; 
+    user-select: none; 
+}
+.category-select-btn:hover { text-decoration: underline; }
+.dictionary-column { min-width: 0; }
+
+.selectable-word { 
+    background-color: color-mix(in srgb, var(--accent-color) 15%, transparent); 
+    padding: 2px 4px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    transition: background-color 0.3s; 
+}
+.selectable-word.selected { 
+    background: color-mix(in srgb, var(--success-color) 30%, transparent); 
+}
+
+/* --- Стили для лейаута тренировки (Этап 1) --- */
+.card-training.training-layout {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+.training-layout-static-header {
+    flex-shrink: 0;
+    min-height: 100px;
+}
+.training-layout-dynamic-content {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    padding: 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: auto; 
+    min-height: auto;
+}
+.training-layout-buttons {
+    flex-shrink: 0;
+    padding-top: 10px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    min-height: 120px;
+}

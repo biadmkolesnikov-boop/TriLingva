@@ -1,0 +1,290 @@
+/* --- РЕФАКТОРИНГ: Сюда перенесены все стили для Настроек из desktop.css --- */
+
+.settings-container {
+    min-height: 550px;
+    max-width: 800px; /* Ограничение для ОБЫЧНЫХ вкладок */
+    padding: 20px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: max-width 0.4s ease-in-out; 
+}
+
+/* Расширение .settings-container внутри .wide-mode */
+.container.wide-mode .settings-container {
+    max-width: 100%; /* Заполняет родительский .container.wide-mode */
+}
+
+.settings-tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    width: 100%;
+    overflow-x: auto; /* Добавим прокрутку для вкладок на моб */
+}
+.settings-tabs .button {
+    width: auto;
+    flex-grow: 1;
+    flex-shrink: 0; /* Не сжимать кнопки вкладок */
+    white-space: nowrap; /* Не переносить текст кнопок */
+}
+.setting-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 600px; /* Ограничиваем ширину для ОБЫЧНЫХ настроек */
+    gap: 15px;
+    flex-wrap: wrap; /* Перенос на малых экранах */
+}
+.setting-row label {
+    color: var(--accent-color);
+    font-weight: bold;
+    flex-basis: 200px; /* Базовая ширина для метки */
+    flex-shrink: 0;
+    text-align: left;
+}
+
+.setting-row input[type="checkbox"] {
+    transform: scale(1.0); 
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    cursor: pointer;
+    flex-grow: 0; /* Не растягивать */
+    flex-shrink: 0;
+    max-width: 16px; /* Ограничение */
+}
+
+.setting-row select,
+.setting-row input[type="range"],
+.setting-row input[type="number"],
+.setting-row input[type="text"],
+.setting-row textarea.profile-textarea {
+    background: var(--paper-color);
+    color: var(--text-color);
+    border: 1px solid var(--accent-color);
+    border-radius: 5px;
+    padding: 5px;
+    flex-grow: 1; /* Элемент управления занимает оставшееся место */
+    max-width: 350px;
+    min-height: 34px; 
+    resize: vertical; 
+}
+
+.setting-row select {
+    padding: 5px 8px; 
+    height: 34px; 
+    min-height: 34px;
+}
+
+
+.setting-row input[type="range"] {
+    cursor: pointer;
+    padding: 0 5px;
+    height: 34px;
+}
+.setting-row .button-group { display: flex; gap: 10px; width: 100%; }
+
+.tab-content-wrapper {
+    position: relative;
+    width: 100%;
+    flex-grow: 1;
+    min-height: 450px;
+}
+
+.tab-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    visibility: hidden;
+    padding-top: 15px;
+    overflow-y: auto;
+}
+
+.tab-content.active {
+    opacity: 1;
+    visibility: visible;
+    position: relative;
+}
+
+/* === СТИЛИ ДЛЯ РЕДАКТОРА ТЕМ (внутри Настроек) === */
+.theme-selector-panel {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    margin-bottom: 15px;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-bottom: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
+}
+.theme-selector-panel button {
+    flex-shrink: 0;
+    padding: 8px 15px;
+    width: auto;
+    font-size: 0.9em;
+}
+
+.themes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+}
+
+.theme-card {
+    background: var(--paper-color);
+    border: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
+    border-radius: 15px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.theme-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
+    padding-bottom: 10px;
+}
+.theme-header label {
+    font-size: 1.2em;
+    color: var(--accent-color);
+}
+
+
+.theme-header.active-theme span {
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.theme-name-input {
+    font-size: 1.2em;
+    font-weight: bold;
+    border: none;
+    background: transparent;
+    color: var(--accent-color);
+    width: 70%;
+}
+.theme-name-input:focus {
+    outline: none;
+    background: color-mix(in srgb, var(--accent-color) 10%, transparent);
+    border-radius: 5px;
+}
+
+.theme-colors-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+.color-input-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.color-input-group label {
+    font-family: monospace;
+    flex-basis: 200px;
+    flex-shrink: 0;
+    color: var(--accent-hover);
+    font-size: 0.9em;
+}
+
+.color-input-group input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    background: none;
+    padding: 0;
+}
+.color-input-group input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+.color-input-group input[type="color"]::-webkit-color-swatch {
+    border: 1px solid color-mix(in srgb, var(--text-color) 25%, transparent);
+    border-radius: 5px;
+}
+
+
+.color-input-group input[type="text"] {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid var(--accent-color);
+    background: var(--bg-color);
+    color: var(--text-color);
+    width: 100px;
+    font-family: monospace;
+}
+
+.theme-actions {
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* === СТИЛИ ДЛЯ АДМИНКИ ПОЛЬЗОВАТЕЛЕЙ (внутри Настроек) === */
+.admin-users-table {
+    width: 100%;
+    border-collapse: collapse; 
+    table-layout: fixed; 
+}
+.admin-users-table th, .admin-users-table td {
+    border: 1px solid color-mix(in srgb, var(--text-color) 15%, transparent);
+    padding: 8px 10px;
+    text-align: left;
+    vertical-align: middle; 
+    word-break: break-word; 
+}
+
+.admin-users-table th:nth-child(1) { width: 45px; } /* ID */
+.admin-users-table th:nth-child(2) { width: 22%; } /* Email */
+.admin-users-table th:nth-child(3) { width: 15%; } /* Nick */
+.admin-users-table th:nth-child(4) { width: 15%; } /* Name */
+.admin-users-table th:nth-child(5) { width: 65px; } /* Year */
+.admin-users-table th:nth-child(6) { width: 65px; } /* Active */
+.admin-users-table th:nth-child(7) { width: 65px; } /* Reset? */
+.admin-users-table th:nth-child(8) { width: auto; } /* Actions (остаток) */
+
+
+.admin-users-table th {
+    background-color: var(--paper-color);
+    color: var(--accent-hover);
+    position: sticky; 
+    top: 0;
+    z-index: 1;
+}
+.admin-user-actions {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap; 
+    justify-content: flex-start; 
+}
+.admin-user-actions .button {
+    margin: 2px; 
+    width: auto; 
+    padding: 4px 8px; 
+    font-size: 0.85em; 
+}
+
+.admin-users-table-wrapper {
+    max-height: 65vh; 
+    overflow: auto; 
+    width: 100%;
+}

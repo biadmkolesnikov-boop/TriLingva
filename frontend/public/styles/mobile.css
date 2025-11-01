@@ -1,0 +1,251 @@
+/* Содержимое для: frontend/public/styles/mobile.css */
+/* --- РЕФАКТОРИНГ: Сюда перенесены все мобильные стили из style.css --- */
+
+/* --- Старый код из mobile.css (менее приоритетный) --- */
+/*
+ * Этот файл будет применяться автоматически на экранах 768px и меньше.
+ * Он "перебивает" стили из desktop.css.
+ */
+
+body {
+    /* На мобильных убираем сложный градиент, экономим батарею */
+    background: var(--bg-color, #f0f0f0);
+    font-size: 16px; /* Чуть крупнее базовый шрифт для читаемости */
+    padding: 0;
+    -webkit-tap-highlight-color: transparent; /* Убираем синюю подсветку при тапе */
+}
+/* ... (остальные стили из старого mobile.css) ... */
+.theme-actions .button {
+    margin-left: 0 !important;
+}
+
+
+/* --- Новый, более полный блок стилей из style.css --- */
+
+@media (max-width: 768px) {
+    body {
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    .main-wrapper {
+        padding: 0;
+        max-width: 100%;
+        min-height: var(--app-height);
+    }
+
+    .container {
+        width: 100%;
+        min-height: var(--app-height);
+        /* УДАЛЕН max-height */
+        margin: 0;
+        padding: 15px;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        /* УДАЛЕН overflow-y */
+    }
+
+    /* --- ДОБАВЛЕНО: .wide-mode на мобильных не отличается --- */
+    .container.wide-mode {
+        max-width: 100%;
+    }
+    /* --- КОНЕЦ ДОБАВЛЕНИЯ --- */
+
+
+    /* --- ИЗМЕНЕНИЕ (v23.x): Размер лого на мобильных --- */
+    .logo {
+        font-size: 50px; /* Уменьшаем размер */
+        margin-bottom: 5px;
+    }
+    /* --- КОНЕЦ ИЗМЕНЕНИЯ --- */
+
+
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+    }
+
+    .start-screen-container, .auth-container {
+        padding: 10px;
+        gap: 10px;
+    }
+    
+    /* --- ДОБАВЛЕНО (из старого mobile.css): Кнопки на всю ширину --- */
+    .button,
+    button {
+        width: 100%; 
+        padding: 14px 20px;
+        font-size: 1.1em; 
+        margin-bottom: 10px;
+    }
+
+    .profile-cards, .stage-cards {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .profile-card, .stage-card {
+        padding: 15px;
+    }
+
+    .profile-card-icon { font-size: 2rem; }
+    .profile-card h2 { font-size: 1.2rem; }
+
+
+    .letter-input {
+        width: 26px;
+        height: 36px;
+        font-size: 18px;
+        margin: 0;
+    }
+     .letter-inputs span {
+         font-size: 20px;
+         line-height: 36px;
+         margin: 0 1px;
+     }
+
+    .dict-editor-table th, .dict-editor-table td {
+        padding: 6px 4px;
+        font-size: 0.9em;
+    }
+    .dict-editor-input {
+        padding: 3px;
+    }
+
+
+    .language-switcher button {
+        padding: 6px 15px;
+        font-size: 0.85em;
+    }
+
+    .global-score-display {
+        display: none;
+    }
+
+    /* --- Убраны фикс. высоты для моб. версии training-layout --- */
+    .card-training.training-layout {
+         height: auto !important;
+         min-height: auto !important;
+         max-height: calc(var(--app-height) * 0.9) !important;
+         overflow-y: auto !important;
+         padding: 8px;
+    }
+     .training-layout-dynamic-content {
+         height: auto !important;
+         min-height: auto !important;
+         max-height: none !important;
+         justify-content: flex-start;
+     }
+
+
+    .russian-word, .foreign-word {
+        font-size: 1.5rem;
+        margin-bottom: 3px;
+        min-height: 40px;
+        margin: 8px 0;
+    }
+    .bilingual-training-block h3 {
+        font-size: 1rem;
+        margin-bottom: 5px;
+    }
+    .button.small {
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+    .buy-heart-container {
+        padding: 8px;
+        font-size: 0.9em;
+    }
+    .hearts-container {
+        font-size: 28px;
+        margin-bottom: 10px;
+        min-height: 32px;
+    }
+    .auto-advance-toggle {
+        font-size: 0.9em;
+        margin-top: 10px;
+    }
+    .training-layout-buttons {
+        padding-top: 8px;
+        gap: 8px;
+        min-height: 100px;
+    }
+    .training-layout-buttons .button {
+        padding: 10px 20px;
+        font-size: 0.95em;
+    }
+
+    .training-layout-static-header {
+        min-height: 80px;
+    }
+
+    /* --- ИЗМЕНЕНИЕ (v21.2): Меняем позиционирование на fixed для мобильных --- */
+    #global-home-button {
+        position: fixed;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+        top: 15px;
+        right: 15px; /* Отодвигаем от края */
+        /* Убираем 'right' со значением '-' */
+    }
+    /* --- КОНЕЦ ИЗМЕНЕНИЯ --- */
+
+    /* --- ИЗМЕНЕНИЕ (v22.5): Мобильные стили для таблицы админа --- */
+    .admin-users-table {
+        table-layout: auto; /* Позволяем таблице быть шире экрана */
+        width: auto; /* Ширина по содержимому */
+    }
+
+    .admin-users-table th, .admin-users-table td {
+        padding: 5px;
+        font-size: 0.85em; /* Еще мельче шрифт */
+        white-space: nowrap; /* --- ДОБАВЛЕНО: Запрещаем перенос на мобильных, чтобы скролл работал --- */
+    }
+
+    /* --- ДОБАВЛЕНО: Минимальная ширина колонок для мобильных --- */
+    .admin-users-table th:nth-child(2) { min-width: 200px; } /* Email */
+    .admin-users-table th:nth-child(3) { min-width: 120px; } /* Nick */
+    .admin-users-table th:nth-child(4) { min-width: 120px; } /* Name */
+    .admin-users-table th:nth-child(8) { min-width: 250px; } /* Actions */
+    /* --- КОНЕЦ ДОБАВЛЕНИЯ --- */
+
+    .admin-user-actions .button {
+        padding: 3px 6px;
+        font-size: 0.8em;
+    }
+    
+    /* --- ДОБАВЛЕНО (из старого mobile.css): Настройки --- */
+    .setting-row {
+        flex-direction: column; /* Ставим элементы вертикально */
+        align-items: flex-start; /* Выравнивание по левому краю */
+        margin-bottom: 15px;
+        padding-bottom: 15px;
+    }
+
+    .setting-row label {
+        margin-bottom: 8px; /* Отступ между лейблом и инпутом */
+        width: 100%; /* Лейбл на всю ширину */
+        text-align: left; /* Текст лейбла слева */
+        font-weight: 600;
+    }
+
+    .setting-row input[type="text"],
+    .setting-row input[type="number"],
+    .setting-row select {
+        width: 100%; /* Все инпуты и селекты на 100% ширины */
+        padding: 12px;
+        font-size: 1em;
+        box-sizing: border-box; /* Важно, чтобы padding не ломал ширину */
+        min-width: 0;
+    }
+
+    .setting-row input[type="checkbox"] {
+        /* Чекбоксы делаем крупнее для пальца */
+        transform: scale(1.5);
+        margin-left: 10px;
+        margin-top: 5px;
+    }
+
+}
